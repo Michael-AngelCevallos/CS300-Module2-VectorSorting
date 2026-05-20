@@ -202,6 +202,7 @@ int partition(vector<Bid> &bids, int begin, int end)
     // return high;
     return high;
 }
+// Finished partition method implementation ----------------------------------------------------------------------------------------------------------
 
 /**
  * Perform a quick sort on bid title
@@ -214,18 +215,26 @@ int partition(vector<Bid> &bids, int begin, int end)
  */
 void quickSort(vector<Bid> &bids, int begin, int end)
 {
-    // set mid equal to 0
+    // set mid equal to 0 -- Creates variable to hold the partition split point.
+    int mid = 0;
 
     /* Base case: If there are 1 or zero bids to sort,
      partition is already sorted otherwise if begin is greater
      than or equal to end then return*/
+    if (begin >= end)
+    {
+        return;
+    }
 
     /* Partition bids into low and high such that
      midpoint is location of last element in low */
+    mid = partition(bids, begin, end);
 
     // recursively sort low partition (begin to mid)
+    quickSort(bids, begin, mid);
 
     // recursively sort high partition (mid+1 to end)
+    quickSort(bids, mid + 1, end);
 }
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -377,6 +386,21 @@ int main(int argc, char *argv[])
             break; // End of 1(b) selection sort timing results --------------------------------------------------------------------------------------------------------------------
 
             // FIXME (2b): Invoke the quick sort and report timing results
+        case 4:
+            // Initialize a timer variable before sorting bids
+            ticks = clock();
+
+            // Perform quick sort on the bids vector
+            quickSort(bids, 0, bids.size() - 1);
+
+            cout << bids.size() << " bids sorted" << endl;
+
+            // Calculate elapsed time and display result
+            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            cout << "time: " << ticks << " clock ticks" << endl;
+            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break; // End of 2(b) quick sort timing results --------------------------------------------------------------------------------------------------------------------
         }
     }
 
