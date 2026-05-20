@@ -172,16 +172,26 @@ int partition(vector<Bid> &bids, int begin, int end)
     string pivot = bids[middlePoint].title;
 
     // while not done<--3
+    while (low <= high)
+    {
+        // keep incrementing low index while bids[low].title < Pivot  <--4
+        while (bids[low].title < pivot)
+        {
+            low++;
+        }
 
-    // keep incrementing low index while bids[low].title < Pivot  <--4
+        // keep decrementing high index while Pivot < bids[high].title <--5
+        while (pivot < bids[high].title)
+        {
+            high--;
+        }
 
-    // keep decrementing high index while Pivot < bids[high].title <--5
-
-    /* If there are zero or one elements remaining,
-        all bids are partitioned. Return high */
-    // else swap the low and high bids (built in vector method)
-    // move low and high closer ++low, --high
-    // return high;
+        /* If there are zero or one elements remaining,
+            all bids are partitioned. Return high */
+        // else swap the low and high bids (built in vector method)
+        // move low and high closer ++low, --high
+        // return high;
+    }
 }
 
 /**
