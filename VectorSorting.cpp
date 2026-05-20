@@ -4,6 +4,34 @@
 // Version     : 1.0
 // Copyright   : Copyright � 2023 SNHU COCE
 // Description : Vector Sorting Algorithms
+
+/* INSTRUCTIONS FOR THE ASSIGNMENT:
+Directions
+
+You must perform the following steps to complete this activity:
+
+-----Setup Project: Begin by creating a new C++ project with the project type Hello World C++ Project.  Name the project “VectorSorting”.
+
+Task 1: Implement the selection sort algorithm: (line 209)
+
+    a. Code the selection sort logic using “bid.title” as the sort field.
+    b. Invoke the selectionSort() method from the main() method including collecting and reporting timing results.
+
+Task 2: Implement the quicksort algorithm: (line 152)
+
+    a. Code the quicksort logic using “bid.title” as the sort field.
+    b. Invoke the quickSort() method from the main() method including collecting and reporting timing results.
+
+Here is sample output from running the completed program:
+
+> ./VectorSorting ~/Downloads/eBid_Monthly_Sales.csv
+> VectorSorting.exe Downloads\eBid_Monthly_Sales.csv
+
+
+
+*/
+
+// Code Starts Here =================================================================
 //============================================================================
 
 #include <algorithm>
@@ -120,7 +148,7 @@ vector<Bid> loadBids(string csvPath)
     return bids;
 }
 
-// FIXME (2a): Implement the quick sort logic over bid.title        <------------------ FIRST FIX ME <------------------#1
+// #2 FIXME (2a): Implement the quick sort logic over bid.title        <------------------ Second FIX ME <------------------#2
 
 /**
  * Partition the vector of bids into two parts, low and high
@@ -174,7 +202,14 @@ void quickSort(vector<Bid> &bids, int begin, int end)
     // recursively sort high partition (mid+1 to end)
 }
 
-// FIXME (1a): Implement the selection sort logic over bid.title
+/*
+ SELCTION SORT IMPLEMENTATION: TASK 1
+A. Code the selection sort logic using “bid.title” as the sort field.
+B. Invoke the selectionSort() method from the main() method including collecting and reporting timing results.
+
+*/
+
+// #1 FIXME (1a): Implement the selection sort logic over bid.title   <------------------ FIRST FIX ME <------------------#1
 
 /**
  * Perform a selection sort on bid title
