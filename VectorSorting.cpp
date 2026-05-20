@@ -188,10 +188,19 @@ int partition(vector<Bid> &bids, int begin, int end)
 
         /* If there are zero or one elements remaining,
             all bids are partitioned. Return high */
+        if (low >= high) // “Did the pointers cross yet?”
+        {
+            return high; // If yes, then return the partition index
+        }
         // else swap the low and high bids (built in vector method)
+        swap(bids[low], bids[high]);
         // move low and high closer ++low, --high
-        // return high;
+        low++;
+        high--;
     }
+
+    // return high;
+    return high;
 }
 
 /**
