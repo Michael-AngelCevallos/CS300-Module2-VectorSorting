@@ -5,7 +5,8 @@
 // Copyright   : Copyright � 2023 SNHU COCE
 // Description : Vector Sorting Algorithms
 
-/* INSTRUCTIONS FOR THE ASSIGNMENT:
+/* ==============instructions=================
+INSTRUCTIONS FOR THE ASSIGNMENT:
 Directions
 
 You must perform the following steps to complete this activity:
@@ -28,7 +29,7 @@ Here is sample output from running the completed program:
 > VectorSorting.exe Downloads\eBid_Monthly_Sales.csv
 
 
-
+============End Of Instructions ======================================================================
 */
 
 // Code Starts Here =================================================================
@@ -148,7 +149,8 @@ vector<Bid> loadBids(string csvPath)
     return bids;
 }
 
-// #2 FIXME (2a): Implement the quick sort logic over bid.title        <------------------ Second FIX ME <------------------#2
+/**  #2 FIXME (2a): Implement the quick sort logic over bid.title        <------------------ Second FIX ME <------------------#2
+ * */
 
 /**
  * Partition the vector of bids into two parts, low and high
@@ -159,16 +161,16 @@ vector<Bid> loadBids(string csvPath)
  */
 int partition(vector<Bid> &bids, int begin, int end)
 {
-    // set low and high equal to begin and end
+    // set low and high equal to begin and end <---1
 
-    // Calculate the middle element as middlePoint (int)
-    // Set Pivot as middlePoint element title to compare (string)
+    // Calculate the middle element as middlePoint (int)<-----2
+    // Set Pivot as middlePoint element title to compare (string)<-----2
 
-    // while not done
+    // while not done<--3
 
-    // keep incrementing low index while bids[low].title < Pivot
+    // keep incrementing low index while bids[low].title < Pivot  <--4
 
-    // keep decrementing high index while Pivot < bids[high].title
+    // keep decrementing high index while Pivot < bids[high].title <--5
 
     /* If there are zero or one elements remaining,
         all bids are partitioned. Return high */
@@ -202,8 +204,8 @@ void quickSort(vector<Bid> &bids, int begin, int end)
     // recursively sort high partition (mid+1 to end)
 }
 
-/*
- SELCTION SORT IMPLEMENTATION: TASK 1
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------
+ SELECTION SORT IMPLEMENTATION: TASK 1
 A. Code the selection sort logic using “bid.title” as the sort field.
 B. Invoke the selectionSort() method from the main() method including collecting and reporting timing results.
 
@@ -222,19 +224,37 @@ B. Invoke the selectionSort() method from the main() method including collecting
 void selectionSort(vector<Bid> &bids)
 {
     // define min as int (index of the current minimum bid)
+    int min;
 
     // check size of bids vector
     // set size_t platform-neutral result equal to bid.size()
+    size_t size = bids.size();
 
     // pos is the position within bids that divides sorted/unsorted
     // for size_t pos = 0 and less than size -1
-    // set min = pos
-    // loop over remaining elements to the right of position
-    // if this element's title is less than minimum title
-    // this element becomes the minimum
-    // swap the current minimum with smaller one found
-    // swap is a built in vector method
-}
+    for (size_t pos = 0; pos < size - 1; ++pos)
+    {
+        // set min = pos
+        min = pos;
+        // loop over remaining elements to the right of position
+        for (size_t i = pos + 1; i < size; i++)
+        {
+            // if this element's title is less than minimum title
+            if (bids[i].title < bids[min].title)
+            {
+                // this element becomes the minimum
+                min = i;
+            }
+        }
+
+        // swap the current minimum with smaller one found
+        // swap is a built in vector method
+        if (min != pos)
+        {
+            swap(bids[pos], bids[min]);
+        }
+    }
+} // End of selection sort implementation ----------------------------------------------------------------------------------------------------------
 
 /**
  * Simple C function to convert a string to a double
