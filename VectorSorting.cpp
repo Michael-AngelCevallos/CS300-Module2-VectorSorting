@@ -162,9 +162,14 @@ vector<Bid> loadBids(string csvPath)
 int partition(vector<Bid> &bids, int begin, int end)
 {
     // set low and high equal to begin and end <---1
+    int low = begin;
+    int high = end;
 
     // Calculate the middle element as middlePoint (int)<-----2
+    int middlePoint = low + (high - low) / 2;
+
     // Set Pivot as middlePoint element title to compare (string)<-----2
+    string pivot = bids[middlePoint].title;
 
     // while not done<--3
 
@@ -334,7 +339,23 @@ int main(int argc, char *argv[])
 
             break;
 
-            // FIXME (1b): Invoke the selection sort and report timing results
+            // FIXME (1b): Invoke the selection sort and report timing results -----------------------------------------------
+        case 3:
+
+            // Initialize a timer variable before sorting bids
+            ticks = clock();
+
+            // Perform selection sort on the bids vector
+            selectionSort(bids);
+
+            cout << bids.size() << " bids sorted" << endl;
+
+            // Calculate elapsed time and display result
+            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            cout << "time: " << ticks << " clock ticks" << endl;
+            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break; // End of 1(b) selection sort timing results --------------------------------------------------------------------------------------------------------------------
 
             // FIXME (2b): Invoke the quick sort and report timing results
         }
